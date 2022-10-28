@@ -9,10 +9,12 @@ const ReplySchema = new Schema(
       default: () => new Types.ObjectId()
     },
     replyBody: {
-      type: String
+      type: String,
+      required: true
     },
     writtenBy: {
-      type: String
+      type: String,
+      required: true,
     },
     createdAt: {
       type: Date,
@@ -52,7 +54,7 @@ const CommentSchema = new Schema(
   }
 );
 
-CommentSchema.virtual('replyCount').get(function() {
+CommentSchema.virtual('replyCount').get(function () {
   return this.replies.length;
 });
 
